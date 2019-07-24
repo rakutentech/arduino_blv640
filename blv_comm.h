@@ -2,7 +2,7 @@
 BLV640_Library
 Copyright (C) 2019 Rakuten
 julian.desvignes@rakuten.com
-wilson.colin@rakuten.com
+wilson.a.colin@rakuten.com
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU Lesser General Public
@@ -83,13 +83,18 @@ private:
     // For sprintf
     char m_printOut[256];
 
-    //------------------------------------------------------// ****************************
-    // 3 types of message can be received:                  //
-    //      - Normal Response: (N+4) bytes                  //
-    //      - Expection response 5 bytes                    //
-    //      - No response (timeout)                         //
-    // Args: size_ (size in bytes of the expected message)  // 
-    // Return: False in case of data corruption             //
+    //------------------------------------------------------//
+    // This function handles the communication process.     //
+    // It send the message m_message and wait for the       //
+    // response (except if the message id is 0). The CRC16  //
+    // is added to the message in this function.            //
+    //                                                      //
+    // msg_ : Number of bytes to send in m_message. It must //
+    // not include the CRC16.                               //
+    // resp_: Expected size of the response with the CRC16  //
+    // included.                                            //
+    // returns true if the message was correctly send and   //
+    // the response not corrupted. Else false.              //
     //------------------------------------------------------//
     bool m_communicate(size_t msg_, size_t resp_);
 
@@ -133,15 +138,15 @@ private:
 
 
 public:
-    //------------------------------------------------------//******************
+    //------------------------------------------------------//
     // Source: Oriental Motor, User Manual - Basic Function //
     //                                                      //
-    // 1. Initialize RS485 Communication.                   //
-    // 2. Set all the slaves into 3_Wire Mode - p.39        //
+    // 1. Set the slaves into 3_Wire Mode - p.39            //
+    // 2. Execute the recalculation for each slave          //
     //                                                      //
-    // Args: nbr_slave_ (number of slaves)                  //
-    //       slaves_ (pointer on array of slave id)         // 
-    //       printFunction_ (print function for feedback)   // 
+    // nbr_slave_: number of slaves                         //
+    // slaves_: pointer on an array of slave ids            // 
+    // printFunction_: print function for feedback          // 
     //------------------------------------------------------//
     blv_comm(size_t nbr_slave_, uint8_t* slaves_, void (*printFunction_)(const char*) = NULL);
     
