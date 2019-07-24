@@ -24,6 +24,9 @@ Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 using namespace blv_commands;
 
+// Declare the serial port
+HardwareSerial* modbus::blv_serial;
+
 // The communication handle
 blv_comm* motors;
 
@@ -34,7 +37,7 @@ uint8_t slaves[1] = {0x01};
 // we cannot use the log function as it uses the only Serial,
 // so we replace the print statement in the library by a placeholder
 void emptyPrint(const char* msg) {
-    (void*)msg; //Doesn't do anything, and makes the compiler happy
+    (void)msg; //Doesn't do anything, and makes the compiler happy
 }
 
 void setup() {

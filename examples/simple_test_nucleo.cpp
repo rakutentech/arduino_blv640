@@ -24,6 +24,9 @@ Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 using namespace blv_commands;
 
+// Declare the serial port
+HardwareSerial* modbus::blv_serial;
+
 // The communication handle
 blv_comm* motors;
 
