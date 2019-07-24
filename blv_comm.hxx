@@ -268,6 +268,7 @@ bool blv_commands::blv_comm::stop_rotation(uint8_t id_, blv_commands::StopMode m
 }
 
 bool blv_commands::blv_comm::diagnose(uint8_t id_){
+    if(id_ == 0x00) return false;
     m_message[0] = id_;
     m_message[1] = 0x08;
     m_message[2] = 0x00;
