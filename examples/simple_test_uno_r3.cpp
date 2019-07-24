@@ -31,9 +31,10 @@ blv_comm* motors;
 uint8_t slaves[1] = {0x01};
 
 // Since the Arduino UNO R3 has only one Serial peripheral, 
-// we cannot use the log function, so we replace the print statement in the library by a placeholder
+// we cannot use the log function as it uses the only Serial,
+// so we replace the print statement in the library by a placeholder
 void emptyPrint(const char* msg) {
-    (void*)msg; //Doesn't do anything, and make the compiler happy
+    (void*)msg; //Doesn't do anything, and makes the compiler happy
 }
 
 void setup() {
