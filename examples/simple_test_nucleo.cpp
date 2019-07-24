@@ -69,7 +69,7 @@ void loop() {
     // Unlock the magnetic brakes and start spinning at the speed set in the register (0 at this point in time)
     motors->start_rotation(slaves[0]);
     // Set the speed in RPM
-    motors->set_speed(slaves[0], 1000); // Unit is in rpm
+    motors->set_speed(slaves[0], 500); // Unit is in rpm
 
     delay(5000);
 
