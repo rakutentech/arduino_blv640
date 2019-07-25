@@ -119,7 +119,7 @@ blv_commands::blv_comm::blv_comm(size_t nbr_slave_, uint8_t* slaves_, void (*pri
     memset(m_response, 0, sizeof(m_response));
 
     // Initialize BLV motors
-    for(size_t i = 0; i < nbr_slave_-1; i++){
+    for(size_t i = 0; i < nbr_slave_; i++){
         slaves_[i] = slaves_[i];
 
         // Set 3-wire input mode (p.19)
