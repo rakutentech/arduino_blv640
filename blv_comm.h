@@ -428,7 +428,7 @@ public:
     //         If the response from the slave failed,       //
     //         return a speed > 4000 rpm                    //
     //------------------------------------------------------//
-    uint16_t get_speed(uint8_t id_, Command type_ = Command::Feedback);
+    int32_t get_speed(uint8_t id_, Command type_ = Command::Feedback);
 
     //------------------------------------------------------//
     // Function to read all the Errors trigerred on the     //

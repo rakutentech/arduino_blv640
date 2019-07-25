@@ -349,7 +349,7 @@ bool blv_commands::blv_comm::reading_registers(uint8_t id_, uint16_t register_, 
     return (m_communicate(6, 2*nbr_reg_ + 5) && m_check_response(6));    // [slave_id, Function_code, nbr_bytes, {data} , {CRC16_low, CRC16_up}]
 }
 
-uint16_t blv_commands::blv_comm::get_speed(uint8_t id_, blv_commands::Command type_){
+int32_t blv_commands::blv_comm::get_speed(uint8_t id_, blv_commands::Command type_){
     m_message[0] = id_;
     m_message[1] = 0x03;
     m_message[2] = 0x00;
@@ -357,11 +357,11 @@ uint16_t blv_commands::blv_comm::get_speed(uint8_t id_, blv_commands::Command ty
     m_message[4] = 0x00;
     m_message[5] = 0x02;
 
-    if(m_communicate(6, 7) && m_check_response(6)){
-        return ((m_response[3] << 8) | m_response[4]);
+    if(m_communicate(6, 9) /* && m_check_response(6)*/){
+        return ((m_response[3] << 24) | m_response[4] << 16 | m_response[5] << 8 | m_response[6]);
     }
 
-    return 0x0FA1;
+    return 0x00000FA1;
 }
 
 bool blv_commands::blv_comm::get_alerts(uint8_t id_, uint8_t nbr_, blv_commands::Alerts type_){
