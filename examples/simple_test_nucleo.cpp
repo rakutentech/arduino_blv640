@@ -2,7 +2,7 @@
 BLV640_Library
 Copyright (C) 2019 Rakuten
 julian.desvignes@rakuten.com
-wilson.colin@rakuten.com
+wilson.a.colin@rakuten.com
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU Lesser General Public
