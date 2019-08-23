@@ -56,7 +56,7 @@ We can see that we have to connect :
 -   TXD to 0
 -   RXD to 1
 
-![](wiring_diag.png)
+![](images/wiring_diag.png)
 
 
 ***Since this board has only one Serial peripheral, we need to deactivate the log statement, see the related example in the lib.***
@@ -119,7 +119,7 @@ _Based on the Modbus RTU protocol, a message is composed as follow [slave_id, fu
 So, in our case we decided to use the slave Id No.2. And based on the User Manual - RS485 p.19, we must write the byte 0b00001000 (8 in hex) at the address 007Dh.  
 Then, by clicking on the start button, we can send the message which will make the motor spin.
 
-![](comtest.png)
+![](images/comtest.png)
 
 # **Digital Control Of The Motor**
 
