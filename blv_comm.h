@@ -122,6 +122,20 @@ private:
     bool m_config_wire_input_mode(uint8_t id_, WireMode val_ = WireMode::Mode_3_Wire);
 
     //------------------------------------------------------//
+    // Source: Oriental Motor, User Manual - RS485. p.28    //
+    //  Query: RS485 Transmission Waiting Time              //
+    //  Registers: 0x140B (lower)                           //
+    //  Function code: 0x06                                 //
+    //  Data: from 0 to 10000 (x0.1ms)                      //
+    //                                                      //
+    // id_ : id of the slave concerned                      //
+    // val_: desired time                                   //
+    // Return true if message successfully sent, else false //
+    //------------------------------------------------------//
+    bool m_config_transmission_waiting_time(uint8_t id_, uint16_t val_ = 1);
+
+
+    //------------------------------------------------------//
     // Send m_operation attribute to the Slave. This bytes  //
     // set the parameters of the remote NET-IN(0 to 15).    //
     //                                                      //
