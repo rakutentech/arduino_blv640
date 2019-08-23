@@ -30,11 +30,11 @@ have received a copy of the GNU Lesser General Public License along with BLV640_
 Oriental Motors provides User Manuals to explain how to operate the motors. But it takes a lot of time to completely understand how to operate the motors.  
 So in this document, we will present the basic commands the user needs to know, and the page reference to learn more about it.
 
-[General manual](https://www.orientalmotor.co.jp/download/dialog.action?serviceTypeNo=18&senimotoId=1&senimotoUrl=%2fproducts%2fdetail.action%3fhinmei%3dBLV640NM30F-1&hinmei=BLV640NM30F-1&gengo=JP&documentType=5&fileName=%2ffile_addon_auth%2fproducts%2fsc%2fmanual%2fHM-5112-6E.pdf&gengoId=2)
+[Operating manual](https://www.orientalmotor.com/products/pdfs/opmanuals/HM-5112-6E.pdf)
 
-[Basic function manual](https://www.orientalmotor.co.jp/download/dialog.action?serviceTypeNo=18&senimotoId=1&senimotoUrl=%2fproducts%2fdetail.action%3fhinmei%3dBLV640NM30F-1&hinmei=BLV640NM30F-1&gengo=JP&documentType=5&fileName=%2ffile_addon_auth%2fproducts%2fsc%2fmanual%2fHM-5113-8E.pdf&gengoId=2)
+[Basic function manual](https://www.orientalmotor.com/products/pdfs/opmanuals/HM-5113-8E.pdf)
 
-[RS-485 communication manual](https://www.orientalmotor.co.jp/download/dialog.action?serviceTypeNo=18&senimotoId=1&senimotoUrl=%2fproducts%2fdetail.action%3fhinmei%3dBLV640NM30F-1&hinmei=BLV640NM30F-1&gengo=JP&documentType=5&fileName=%2ffile_addon_auth%2fproducts%2fsc%2fmanual%2fHM-5114-7E.pdf&gengoId=2)
+[RS-485 communication manual](https://www.orientalmotor.com/products/pdfs/opmanuals/HM-5114-7E.pdf)
 
 # **Micro Controller Configuration**
 
