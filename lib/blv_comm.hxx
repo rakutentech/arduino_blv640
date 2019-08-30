@@ -100,17 +100,6 @@ bool blv_commands::blv_comm::m_config_wire_input_mode(uint8_t id_, blv_commands:
     return(m_communicate(6, 8) && ((id_ == 0x00) || m_check_response(8)));
 }
 
-bool blv_commands::blv_comm::m_config_transmission_waiting_time(uint8_t id_, uint16_t val_){
-    m_message[0] = id_;
-    m_message[1] = 0x06;
-    m_message[2] = 0x14;
-    m_message[3] = 0x0B;
-    m_message[4] = static_cast<uint8_t>((val_ & 0xF0) >> 8);
-    m_message[5] = static_cast<uint8_t>((val_ & 0x0F));
-
-    return(m_communicate(6, 8) && ((id_ == 0x00) || m_check_response(8)));
-}
-
 bool blv_commands::blv_comm::m_send_operation_message(uint8_t id_){
     m_message[0] = id_;
     m_message[1] = 0x06;
@@ -140,20 +129,12 @@ blv_commands::blv_comm::blv_comm(size_t nbr_slave_, uint8_t* slaves_, void (*pri
             sprintf(m_printOut, "[Blv_comm][Id: %d] Wire Input Mode Failed\n", slaves_[i]);
             m_printFunction(m_printOut);
         } else {
+            exec_config(slaves_[i]);
 
-            if(!m_config_transmission_waiting_time(slaves_[i])){
-                // Error Message
-                memset(m_printOut, 0, 256);
-                sprintf(m_printOut, "[Blv_comm][Id: %d] Transmission Waiting Time Set Failed\n", slaves_[i]);
-                m_printFunction(m_printOut);
-            } else {
-                exec_config(slaves_[i]);
-
-                // According to the BLV documentation, the default mode is Mode 0. And 
-                // within this mode, we must use mode 2 to 7 for digital control.
-                // Mode 2 is by default in select_mode function
-                select_mode(slaves_[i]);
-            }
+            // According to the BLV documentation, the default mode is Mode 0. And 
+            // within this mode, we must use mode 2 to 7 for digital control.
+            // Mode 2 is by default in select_mode function
+            select_mode(slaves_[i]);
         }
     }
 }
