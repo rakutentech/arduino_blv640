@@ -75,7 +75,12 @@ private:
         Serial.print(message_);
     }
 
+     static void nopFunc() {
+        asm("nop");
+    }
+
     void (*m_printFunction)(const char*) = &defaultPrint;
+    void (*m_yieldFunction)() = &nopFunc;
 
     // 0 : Everything ; 1 : Errors only
     uint8_t m_logLevel = 0;
@@ -148,7 +153,7 @@ public:
     // slaves_: pointer on an array of slave ids            // 
     // printFunction_: print function for feedback          // 
     //------------------------------------------------------//
-    blv_comm(size_t nbr_slave_, uint8_t* slaves_, void (*printFunction_)(const char*) = NULL);
+    blv_comm(size_t nbr_slave_, uint8_t* slaves_, void (*printFunction_)(const char*) = NULL, void (*yieldFunction_)() = NULL);
     
     blv_comm(void) = default;
 

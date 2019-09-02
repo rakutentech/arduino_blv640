@@ -75,7 +75,7 @@ void modbus::send(uint8_t* message_, size_t size_) {
     }
 }
    
-int modbus::receive(uint8_t* response_, size_t size_){
+int modbus::receive(uint8_t* response_, size_t size_, void (*yieldFunction_)()){
     size_t length = size_;
     uint64_t lastSymbolTime;
 
@@ -83,7 +83,7 @@ int modbus::receive(uint8_t* response_, size_t size_){
     for(size_t i = 0; i < length; i++){
         lastSymbolTime = millis();
 
-        while(!blv_serial->available() && (millis() - lastSymbolTime < SYMBOL_TIMEOUT )) taskYIELD();
+        while(!blv_serial->available() && (millis() - lastSymbolTime < SYMBOL_TIMEOUT )) yieldFunction_();
         if(blv_serial->available()){
             int data = blv_serial->read();
 

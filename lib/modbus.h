@@ -23,8 +23,6 @@ Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define MODBUS_H
 
 #include <Arduino.h>
-#include <STM32FreeRTOS.h>
-
 
 namespace modbus
 {
@@ -50,7 +48,7 @@ namespace modbus
     // Return -1 if the message is corrupted. Return the    //
     // number of bytes received oterwise.                   //
     //------------------------------------------------------//
-    int receive(uint8_t* response_, size_t size_);
+    int receive(uint8_t* response_, size_t size_, void (*yieldFunction_)());
 } // Namespace modbus
 
 #include "modbus.hxx"

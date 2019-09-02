@@ -45,7 +45,7 @@ bool blv_commands::blv_comm::m_communicate(size_t msg_, size_t resp_){
 
     // Get Slave Answer
     if(m_message[0] != 0x00) {
-        int length = modbus::receive(m_response, resp_);
+        int length = modbus::receive(m_response, resp_, m_yieldFunction);
         if(length == -1){
             m_printFunction("[Blv_comm] Slave Response Corrupted\n");
             return false;
@@ -111,8 +111,9 @@ bool blv_commands::blv_comm::m_send_operation_message(uint8_t id_){
     return(m_communicate(6, 8) && ((id_ == 0x00) || m_check_response(8)));
 }
 
-blv_commands::blv_comm::blv_comm(size_t nbr_slave_, uint8_t* slaves_, void (*printFunction_)(const char*)){
+blv_commands::blv_comm::blv_comm(size_t nbr_slave_, uint8_t* slaves_, void (*printFunction_)(const char*), void (*yieldFunction_)()){
     if(printFunction_ != NULL) m_printFunction = printFunction_;
+    if(yieldFunction_ != NULL) m_yieldFunction = yieldFunction_;
 
     // Initialize class attributes
     memset(m_message, 0, sizeof(m_message));
