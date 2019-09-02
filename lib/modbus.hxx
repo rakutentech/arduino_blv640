@@ -83,7 +83,7 @@ int modbus::receive(uint8_t* response_, size_t size_){
     for(size_t i = 0; i < length; i++){
         lastSymbolTime = millis();
 
-        while(!blv_serial->available() && (millis() - lastSymbolTime < SYMBOL_TIMEOUT )) asm("nop");
+        while(!blv_serial->available() && (millis() - lastSymbolTime < SYMBOL_TIMEOUT )) taskYIELD();
         if(blv_serial->available()){
             int data = blv_serial->read();
 

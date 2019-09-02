@@ -23,6 +23,8 @@ Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define MODBUS_H
 
 #include <Arduino.h>
+#include <STM32FreeRTOS.h>
+
 
 namespace modbus
 {
