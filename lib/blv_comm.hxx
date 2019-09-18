@@ -56,9 +56,7 @@ bool blv_commands::blv_comm::m_communicate(size_t msg_, size_t resp_){
         /**************************************/
         uint16_t slave_crc16 = (m_response[length-1] << 8) | m_response[length-2];
         uint16_t expected_crc16 = modbus::CRC16(m_response, length-2);
-        if((expected_crc16 ^ slave_crc16) != 0){
-            return false;
-        }
+        if((expected_crc16 ^ slave_crc16) != 0) return false;
 
         /**************************************/
         /*  Broadcast Slave Response   */
@@ -81,9 +79,7 @@ bool blv_commands::blv_comm::m_communicate(size_t msg_, size_t resp_){
 bool blv_commands::blv_comm::m_check_response(size_t size_){
     if(m_message[0] == 0x00) return true;
     // Check if it is an Exception Response
-    if(m_response[1] >= 0x80) {
-        return false;
-    }
+    if(m_response[1] >= 0x80) return false;
 
     // Check if the Response matches the message sent
     for(size_t i = 0; i < size_; i++){
@@ -136,13 +132,10 @@ blv_commands::blv_comm::blv_comm(size_t nbr_slave_, uint8_t* slaves_, void (*pri
         } else {
             exec_config(slaves_[i]);
 
-
             // According to the BLV documentation, the default mode is Mode 0. And 
             // within this mode, we must use mode 2 to 7 for digital control.
             // Mode 2 is by default in select_mode function
             select_mode(slaves_[i]);
-                        delay(1000);
-
         }
     }
 }
