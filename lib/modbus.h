@@ -48,7 +48,7 @@ namespace modbus
     // Return -1 if the message is corrupted. Return the    //
     // number of bytes received oterwise.                   //
     //------------------------------------------------------//
-    int receive(uint8_t* response_, size_t size_, void (*yieldFunction_)());
+    int receive(uint8_t* response_, size_t size_, void (*yieldFunction_)(bool));
 } // Namespace modbus
 
 #include "modbus.hxx"
