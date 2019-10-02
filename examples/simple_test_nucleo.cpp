@@ -20,7 +20,7 @@ Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 #include <Arduino.h>
-#include "blv_comm.h"
+#include <src/blv_comm.h>
 
 using namespace blv_commands;
 

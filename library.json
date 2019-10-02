@@ -1,0 +1,25 @@
+{
+    "name": "BLV640-Arduino",
+    "version": "1.0",
+    "keywords": "blv640, orientalmotor, driver",
+    "description": "BLV640 RS485 driver for Arduino",
+    "repository":
+    {
+      "type": "git",
+      "url": "https://github.com/rakutentech/arduino_blv640.git"
+    },
+    "authors":
+    [
+      {
+        "name": "Julian Desvignes",
+        "email": "julian.desvignes@rakuten.com",
+        "maintainer": true
+      },
+      {
+        "name": "Wilson Colin",
+        "email": "wilson.colin@rakuten.com"
+      }
+    ],
+    "frameworks": "arduino",
+    "platforms": "*"
+}
